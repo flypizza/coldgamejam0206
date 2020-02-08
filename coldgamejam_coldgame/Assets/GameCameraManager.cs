@@ -16,7 +16,6 @@ public class GameCameraManager : MonoBehaviour
     void Start()
     {
 
-        proCamera2DCinematics.Play();
     }
 
     // Update is called once per frame

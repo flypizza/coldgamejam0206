@@ -272,7 +272,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 231}
-  m_SizeDelta: {x: 457.24, y: 234.14}
+  m_SizeDelta: {x: 801.6, y: 234.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &860121789
 MonoBehaviour:
@@ -305,9 +305,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Cold
-
-'
+  m_Text: 'Money Race : Life is cold'
 --- !u!222 &860121790
 CanvasRenderer:
   m_ObjectHideFlags: 0

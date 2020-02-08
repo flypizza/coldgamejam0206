@@ -13,10 +13,8 @@ public class IntroTitleText : MonoBehaviour
 
         Sequence seq = DOTween.Sequence();
         seq.Append(rt.DOAnchorPosY(1.0f, 0.1f).SetDelay(0.3f));
-        seq.Append(rt.DOShakeAnchorPos(0.3f));
+        seq.Append(rt.DOShakeAnchorPos(0.3f).SetDelay(1.0f));
         seq.AppendCallback(CallBack_test);
-
-
     }
 
     public void CallBack_test()
