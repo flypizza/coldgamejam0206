@@ -5,7 +5,11 @@ using UnityEngine;
 public class Pocket : MonoBehaviour
 {
     public double money = 0.0f;
-
+    public Health health;
+    private void Awake()
+    {
+        health = GetComponent<Health>();
+    }
     public bool UpdateMoney(double value, bool up)
     {
         if(up)
@@ -35,6 +39,10 @@ public class Pocket : MonoBehaviour
             {
                 UpdateMoney(itemMoney.value, true);
                 itemMoney.Gone();
+                if(health.main_char ==false)
+                {
+                    GetComponent<Enemy>().FindNext();
+                }
             }
 
         }

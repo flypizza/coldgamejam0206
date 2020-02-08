@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8782720102617846751}
   - component: {fileID: 8782720102617846750}
   - component: {fileID: 8782720102617846748}
-  - component: {fileID: 8782720102617846749}
   m_Layer: 0
   m_Name: Item_Money
   m_TagString: Money
@@ -47,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 100
+  dead: 0
 --- !u!212 &8782720102617846750
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -113,16 +113,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.07999999
---- !u!114 &8782720102617846749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8782720102617846720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a19d2675a9b9284bb8e82e9611a21a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  value: 100

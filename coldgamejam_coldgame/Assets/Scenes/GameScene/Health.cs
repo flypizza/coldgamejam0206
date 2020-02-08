@@ -33,7 +33,6 @@ public class Health : MonoBehaviour
         else
         {
             transform.position = startPos;
-            GetComponent<AIDestinationSetter>().target = null;
         }
 
 
