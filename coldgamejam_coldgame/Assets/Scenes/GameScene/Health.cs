@@ -22,19 +22,6 @@ public class Health : MonoBehaviour
     }
     public void Die()
     {
-        //effect
-        //return
-        if (main_char)
-        {
-            transform.position = startPos;
-            FindObjectOfType<DestinationChanger>().transform.position = startPos;
-            
-        }
-        else
-        {
-            transform.position = startPos;
-        }
-
-
+       transform.position = startPos;
     }
 }

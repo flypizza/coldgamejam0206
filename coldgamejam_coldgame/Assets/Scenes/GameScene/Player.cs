@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-public class Enemy : MonoBehaviour
+
+
+public class Player : MonoBehaviour
 {
     // find next target and go.
 
@@ -11,12 +13,8 @@ public class Enemy : MonoBehaviour
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
 
-
-
-    AIDestinationSetter destinationSetter;
     List<Item> itemMoneys = new List<Item>();
     public Item near_item;
-
 
     Path path;
     int currentWaypoint = 0;
@@ -29,29 +27,25 @@ public class Enemy : MonoBehaviour
 
     GameManager gm;
 
-
-
     private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
-        destinationSetter = GetComponent<AIDestinationSetter>();
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
     }
 
-    public void UpdatePath()
+    public void UpdatePath(Vector3 targetPos)
     {
-        if(seeker.IsDone() && gm.STATE == GAME_STATE.START)
+        if (seeker.IsDone())
         {
-            FindNext();
-            seeker.StartPath(rb.position, near_item.transform.position, OnPathComplete);
+            seeker.StartPath(rb.position, targetPos, OnPathComplete);
         }
     }
 
+
     public void OnPathComplete(Path p)
     {
-        if(!p.error)
+        if (!p.error)
         {
             path = p;
             currentWaypoint = 0;
@@ -59,31 +53,21 @@ public class Enemy : MonoBehaviour
     }
     private void Start()
     {
-        Item[] temp_itemMoneys = FindObjectsOfType<Item>();
-        itemMoneys.AddRange(temp_itemMoneys);
-
-
-    }
-
-    public void RaceStart()
-    {
-
-        InvokeRepeating("UpdatePath", 0f, .5f);
     }
 
     private void FixedUpdate()
     {
-        if(path == null)
+        if (path == null)
         {
             return;
         }
 
-        if(currentWaypoint >= path.vectorPath.Count)
+        if (currentWaypoint >= path.vectorPath.Count)
         {
             reachedEndOfPath = true;
             return;
         }
-        else 
+        else
         {
             reachedEndOfPath = false;
         }
@@ -94,23 +78,31 @@ public class Enemy : MonoBehaviour
 
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-        if(distance < nextWaypointDistance)
+        if (distance < nextWaypointDistance)
         {
             currentWaypoint++;
         }
 
-        
-        if (rb.velocity.x >= 0.01f)
+
+        if (direction.x >= 0.01f)
         {
             GFX.transform.localScale = new Vector3(-1f, 1f, 1f);
         }
-        else if (rb.velocity.x <= -0.01f)
+        else if (direction.x <= -0.01f)
         {
             GFX.transform.localScale = new Vector3(1f, 1f, 1f);
         }
-        
+
     }
 
+    public void Update()
+    {
+        if(Input.GetMouseButtonDown(0) && gm.STATE == GAME_STATE.START)
+        {
+            Vector2 touchPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            UpdatePath(touchPoint);
+        }
+    }
     public void FindNext()
     {
         // 가장 가깝고 우측에 있는 녀석들 중에 하나를 골라온다.
@@ -123,9 +115,11 @@ public class Enemy : MonoBehaviour
         Item return_item = null;
         float near_dist = 9999999.0f;
 
-        foreach(Item _item in itemMoneys) {
+        foreach (Item _item in itemMoneys)
+        {
             float dist = Vector3.Distance(transform.position, _item.transform.position);
-            if(dist < near_dist && _item.DEAD == false) {
+            if (dist < near_dist && _item.DEAD == false)
+            {
                 near_dist = dist;
                 return_item = _item;
             }

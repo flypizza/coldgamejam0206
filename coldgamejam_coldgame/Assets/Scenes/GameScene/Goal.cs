@@ -5,19 +5,25 @@ using Pathfinding;
 
 public class Goal : MonoBehaviour
 {
+    GameManager gm;
+    private void Awake()
+    {
+        gm = FindObjectOfType<GameManager>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")  {
+            if(gm.STATE == GAME_STATE.START)
+            {
+                Debug.Log("GameSet");
+                gm.GameEnd();
 
-            Debug.Log("GameSet");
+                GameObject winner = collision.gameObject;
 
-            GameObject winner = collision.gameObject;
-
-            winner.GetComponent<AIDestinationSetter>().target = null;
-
-
-            FindObjectOfType<DestinationChanger>().GameSet();
-
+                GameCameraManager gameCameraManager = FindObjectOfType<GameCameraManager>();
+                gameCameraManager.proCamera2DCinematics.AddCinematicTarget(winner.transform, 0.5f, 3.0f, 3.0f);
+                gameCameraManager.proCamera2DCinematics.Play();
+            }
         }
     }
 }
