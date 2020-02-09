@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
-        Application.targetFrameRate = 60.0f;
+        Application.targetFrameRate = 60;
 
         btn_replay.gameObject.SetActive(false);
         btn_replay.onClick.AddListener(GameRestart);
