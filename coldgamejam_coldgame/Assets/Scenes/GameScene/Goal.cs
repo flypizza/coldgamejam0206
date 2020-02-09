@@ -18,7 +18,21 @@ public class Goal : MonoBehaviour
                 Debug.Log("GameSet");
                 gm.GameEnd();
 
+
                 GameObject winner = collision.gameObject;
+                if(winner.GetComponent<Health>().main_char)
+                {
+                    Pocket pc = winner.GetComponent<Pocket>();
+
+                    gm.UpdateBestScore(pc.money);
+
+                }
+                else
+                {
+                    gm.YouLoose();
+                }
+
+
 
                 GameCameraManager gameCameraManager = FindObjectOfType<GameCameraManager>();
                 gameCameraManager.proCamera2DCinematics.AddCinematicTarget(winner.transform, 0.5f, 3.0f, 3.0f);

@@ -57,12 +57,15 @@ public class Enemy : MonoBehaviour
             currentWaypoint = 0;
         }
     }
+    EnemyGFX GFX_SCRIPT;
     private void Start()
     {
         Item[] temp_itemMoneys = FindObjectsOfType<Item>();
         itemMoneys.AddRange(temp_itemMoneys);
 
+        GFX_SCRIPT = GFX.GetComponent<EnemyGFX>();
 
+        speed = UnityEngine.Random.Range(speed - 200.0f, speed + 200.0f);
     }
 
     public void RaceStart()
@@ -99,14 +102,15 @@ public class Enemy : MonoBehaviour
             currentWaypoint++;
         }
 
-        
+
+        Vector3 ori_scale = GFX_SCRIPT.curScale;
         if (rb.velocity.x >= 0.01f)
         {
-            GFX.transform.localScale = new Vector3(-1f, 1f, 1f);
+            GFX.transform.localScale = new Vector3(-ori_scale.x, ori_scale.y, 1.0f);
         }
         else if (rb.velocity.x <= -0.01f)
         {
-            GFX.transform.localScale = new Vector3(1f, 1f, 1f);
+            GFX.transform.localScale = new Vector3(ori_scale.x, ori_scale.y, 1.0f);
         }
         
     }

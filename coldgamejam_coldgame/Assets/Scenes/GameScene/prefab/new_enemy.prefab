@@ -111,7 +111,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 5
+  m_LinearDrag: 3.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 2000
+  speed: 2200
   nextWaypointDistance: 1.5
   near_item: {fileID: 0}
   GFX: {fileID: 7494345067876736695}
@@ -258,6 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7494345067876736694}
   - component: {fileID: 7494345067876736693}
+  - component: {fileID: 4826049736367754676}
   m_Layer: 0
   m_Name: enemyGFX
   m_TagString: Untagged
@@ -329,6 +330,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4826049736367754676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7494345067876736695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02dfc04d6ea22646872778bacf41b25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faces:
+  - {fileID: 21300000, guid: caf157868df303b4ea7057932624e666, type: 3}
+  - {fileID: 21300000, guid: e6e76981e62f90c4aabb8e54e70a6b09, type: 3}
+  - {fileID: 21300000, guid: 02ea10dd5c01b8a4eb5cad89c3bf0dc8, type: 3}
+  - {fileID: 21300000, guid: 5da2166bce2eb71409dc362db9525ca8, type: 3}
+  - {fileID: 21300000, guid: f975bfcf247d7a04e8bbf487cc2c17f6, type: 3}
+  - {fileID: 21300000, guid: 3cf139fdc64abcd469fb616634cb4ba9, type: 3}
+  - {fileID: 21300000, guid: a19f2190bc06ca846b4bba83d8f74ea5, type: 3}
+  - {fileID: 21300000, guid: b64d671ade90e1d4cac1aa81f088ba77, type: 3}
+  - {fileID: 21300000, guid: 203011023d417664d97b4742cf0ce1fb, type: 3}
+  - {fileID: 21300000, guid: 8cc0b050902689149a218b88a7547868, type: 3}
+  - {fileID: 21300000, guid: ef78eb93e93831642be43ce55152255a, type: 3}
+  - {fileID: 21300000, guid: 700a017ee73cfd943bf614ab39807c44, type: 3}
+  - {fileID: 21300000, guid: 7d7ba09a87ef3f247aae6a549d9c382a, type: 3}
+  - {fileID: 21300000, guid: 92e68d16ee7a916408876abf2734e618, type: 3}
+  - {fileID: 21300000, guid: 2effdcd007425434088e6dc4e4e95442, type: 3}
+  - {fileID: 21300000, guid: 0f5c69fae25da1440b6f1e0e037cd498, type: 3}
+  curScale: {x: 0, y: 0}
 --- !u!1001 &487673004706398570
 PrefabInstance:
   m_ObjectHideFlags: 0

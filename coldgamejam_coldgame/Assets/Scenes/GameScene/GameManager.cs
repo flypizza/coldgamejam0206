@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public Text txt_game_state;
     public Button btn_replay;
+    public Text btn_text_replay;
     public GAME_STATE STATE
     {
         get
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     {
         btn_replay.gameObject.SetActive(false);
         btn_replay.onClick.AddListener(GameRestart);
+        btn_text_replay = btn_replay.GetComponentInChildren<Text>();
     }
     public void Start_RaceCount()
     {
@@ -38,6 +40,26 @@ public class GameManager : MonoBehaviour
         seq.Append(txt_game_state.DOText("Go", 0.3f));
         
         
+    }
+
+    public void UpdateBestScore(double score)
+    {
+        float bestScore = PlayerPrefs.GetFloat("bestScore");
+        if(bestScore < score)
+        {
+            PlayerPrefs.SetFloat("bestScore", (float)score);
+            bestScore = (float)score;
+        }
+        btn_text_replay.text = "";
+        string print_sen = "bestScore : " + bestScore.ToString("F0") + "\n Score : " + score.ToString("F0") + "\n RETRY";
+        btn_text_replay.DOText(print_sen, 0.5f);
+    }
+
+    public void YouLoose()
+    {
+        btn_text_replay.text = "";
+        string print_sen = "You Dead...\nRetry";
+        btn_text_replay.DOText(print_sen, 0.5f);
     }
     public void GameStart()
     {
