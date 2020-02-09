@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
 {
     public Vector3 startPos = new Vector3();
     public bool main_char = false;
+    public GameObject die_particle;
     private void Awake()
     {
         startPos = transform.position;
@@ -22,6 +23,8 @@ public class Health : MonoBehaviour
     }
     public void Die()
     {
-       transform.position = startPos;
+        GetComponent<AudioSource>().Play();
+        Instantiate(die_particle).transform.position = transform.position;
+        transform.position = startPos;
     }
 }

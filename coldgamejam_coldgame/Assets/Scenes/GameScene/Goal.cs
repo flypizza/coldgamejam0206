@@ -23,6 +23,16 @@ public class Goal : MonoBehaviour
                 GameCameraManager gameCameraManager = FindObjectOfType<GameCameraManager>();
                 gameCameraManager.proCamera2DCinematics.AddCinematicTarget(winner.transform, 0.5f, 3.0f, 3.0f);
                 gameCameraManager.proCamera2DCinematics.Play();
+
+                Health[] healths = FindObjectsOfType<Health>();
+
+                foreach(Health _h in healths)
+                {
+                    if(_h.transform != winner.transform)
+                    {
+                        _h.Die();
+                    }
+                }
             }
         }
     }

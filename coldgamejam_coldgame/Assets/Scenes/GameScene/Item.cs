@@ -6,6 +6,7 @@ public class Item : MonoBehaviour
 {
     public double value = 0.0f;
     public bool dead = false;
+    public GameObject _effect;
 
     public bool DEAD
     {
@@ -16,7 +17,14 @@ public class Item : MonoBehaviour
     }
     public void Gone()
     {
+        GetComponent<AudioSource>().Play();
         dead = true;
-        GetComponent<SpriteRenderer>().gameObject.SetActive(false);
+        GoEffect();
+        GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f, 0f);
+    }
+
+    public void GoEffect()
+    {
+        Instantiate(_effect).transform.position = transform.position;
     }
 }

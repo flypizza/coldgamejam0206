@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(path == null)
+        if(path == null || gm.STATE != GAME_STATE.START)
         {
             return;
         }
